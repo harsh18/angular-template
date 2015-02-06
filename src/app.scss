@@ -3,50 +3,7 @@
 #	Date : 6th Jan 2015
 */
 
-// Core variables and mixins
-@import "core/styles/utilities/variables";
-@import "core/styles/utilities/mixins";
+//Vendor - Bootstrap
+@import "core/styles/vendor/bootstrap.scss";
 
-// Reset and dependencies
-@import "core/styles/base/normalize";
-@import "core/styles/components/glyphicons";
-
-// Core CSS
-@import "core/styles/base/scaffolding";
-@import "core/styles/base/type";
-@import "core/styles/layout/grid";
-@import "core/styles/components/tables";
-@import "core/styles/layout/forms";
-@import "core/styles/components/buttons";
-
-// Components
-@import "core/styles/components/dropdowns";
-//@import "components/button-groups";
-@import "core/styles/components/input-groups";
-@import "core/styles/components/navs";
-@import "core/styles/components/navbar";
-//@import "components/breadcrumbs";
-//@import "components/pagination";
-//@import "components/pager";
-//@import "components/labels";
-//@import "components/badges";
-//@import "components/jumbotron";
-@import "core/styles/components/thumbnails";
-@import "core/styles/components/alerts";
-//@import "components/progress-bars";
-//@import "components/media";
-//@import "components/list-group";
-@import "core/styles/components/panels";
-//@import "bootstrap/responsive-embed";
-@import "core/styles/components/wells";
-@import "core/styles/components/close";
-
-// Components w/ JavaScript
-@import "core/styles/components/modals";
-@import "core/styles/components/tooltip";
-@import "core/styles/components/popovers";
-@import "core/styles/components/carousel";
-
-// Utility classes
-@import "core/styles/utilities/utilities";
-@import "core/styles/layout/responsive-utilities";
+@import "bourbon";
