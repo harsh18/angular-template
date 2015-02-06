@@ -1,0 +1,79 @@
+//Landing Page
+//Landing Page
+html{
+	margin:0;
+	height:100%;
+	body{
+		min-height:100%;
+		background:rgba(236, 240, 241, 1);
+		&.body-landing{
+			padding-top:5%;
+			background:rgba(0, 119, 187, 1);
+			font-family:roboto, cursive;
+			background:url('../assets/images/employee_checks_phone.jpg') no-repeat top right;
+			-webkit-background-size: cover;
+			  -moz-background-size: cover;
+			  -o-background-size: cover;
+			  background-size: cover;
+		}
+	}
+}
+
+.container-fluid{
+	&.container-landing{
+		position:relative;
+	}
+}
+
+//Logo - Comoon
+label.logo{
+	font-family: 'Lobster', cursive;
+	font-style:italic;
+	color: rgba(238, 238, 238, 1);
+	display:block;
+	span.first-part{
+		color: rgba(255, 153, 0, 1);
+	}
+	&.size-1x{
+		font-size: rem(40);
+	}
+	&.size-0x{
+		font-size: rem(16);
+	}
+	a{
+		color:inherit;
+		&:hover{
+			color:inherit;
+			text-decoration:none;
+		}
+	}
+}
+
+.welcome-title{
+	font-size: rem(90);
+	color:rgba(255, 255, 255, .7);
+	color:rgba(149, 165, 166, .7);
+	padding-bottom:70px;
+}
+
+//Responsive View
+//-----------------------------------------------
+//Nothing to show above 768px
+@media (min-width: $screen-xs-max) {
+	body{
+		display:none;
+	}	
+}
+//Extra small Screen
+@media (max-width: $screen-xs-max) {
+	
+	.welcome-title{
+		font-size: rem(45);
+		color:rgba(149, 165, 166, .7);
+		padding-bottom:70px;
+		background:rgba(236, 240, 241, 0.9);
+		@include border-top-radius(6px);
+		@include border-right-radius(6px);
+		padding:20px 25px;
+	}
+}

@@ -1,0 +1,68 @@
+/*
+#	Author : Harsh Kumar Lamba
+#	Date : 22nd Jan 2015
+*/
+
+// library and fonts
+@import "bourbon";
+@import url("https://fonts.googleapis.com/css?family=Roboto ");
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+// Core variables and mixins
+@import "utilities/variables";
+@import "utilities/mixins";
+
+// Reset and dependencies
+@import "base/normalize";
+@import "components/glyphicons";
+@import "base/fontAwesome";
+@import "base/verticalRhythm";
+
+// Core CSS
+@import "base/scaffolding";
+@import "base/type";
+@import "layout/grid";
+@import "components/tables";
+@import "layout/forms";
+@import "components/buttons";
+
+// Components
+@import "components/dropdowns";
+//@import "components/button-groups";
+@import "components/input-groups";
+@import "components/navs";
+@import "components/navbar";
+//@import "components/breadcrumbs";
+//@import "components/pagination";
+//@import "components/pager";
+//@import "components/labels";
+//@import "components/badges";
+//@import "components/jumbotron";
+@import "components/thumbnails";
+@import "components/alerts";
+//@import "components/progress-bars";
+//@import "components/media";
+//@import "components/list-group";
+@import "components/panels";
+//@import "bootstrap/responsive-embed";
+@import "components/wells";
+@import "components/close";
+
+// Components w/ JavaScript
+@import "components/modals";
+@import "components/tooltip";
+@import "components/popovers";
+@import "components/carousel";
+
+// Utility classes
+@import "utilities/utilities";
+@import "layout/responsive-utilities";
+
+//Layout
+@import "layout/header.scss";
+
+//Pages
+@import "layout/landing.scss";
+
+//Login 
+//@import "../../pages/login/login.scss";
