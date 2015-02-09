@@ -26,12 +26,12 @@ module.exports = function() {
         ],
         build: './build/',
         client: client,
-        css: temp + 'styles.css',
+        css: temp + 'app.css',
         fonts: './bower_components/bootstrap/dist/fonts/**/*.*',
         html: client + '**/*.html',
         htmltemplates: client + '**/*.html',
         images: client + 'images/**/*.*',
-        index: client + 'index.html',
+        index: client + '*.html',
         js: [
             client + '**/*.module.js',
             client + '**/*.js'
