@@ -6,4 +6,12 @@
 //Vendor - Bootstrap
 @import "core/styles/vendor/bootstrap.scss";
 
-@import "bourbon";
+//Bourbon
+//@import "bourbon";
+
+//Helpers - Variables and overwritten variables
+@import "core/styles/helpers/variables.scss";
+
+
+//Vertical Rhythm - Spacing
+@import "core/styles/base/verticalRhythm.scss";
