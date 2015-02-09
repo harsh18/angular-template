@@ -74,9 +74,7 @@ gulp.task('styles', ['clean-styles'], function() {
     return gulp
         .src(config.sassRoot)
         .pipe($.plumber()) // exit gracefully if something fails after this
-        .pipe($.sass({
-            includePaths: require('node-bourbon').includePaths
-        }))
+        .pipe($.sass())
         .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
         .pipe(gulp.dest(config.temp));
 });
@@ -386,17 +384,17 @@ gulp.task('bump', function() {
  * Use this XOR the browser-sync option.files, not both.
  * @param  {Boolean} isDev - dev or build mode
  */
-//function addWatchForFileReload(isDev) {
-//    if (isDev) {
-//        gulp.watch([config.sass], ['styles', browserSync.reload]);
-//        gulp.watch([config.client + '**/*', '!' + config.sass], browserSync.reload)
-//            .on('change', function(event) { changeEvent(event); });
-//    }
-//    else {
-//        gulp.watch([config.sass, config.js, config.html], ['build', browserSync.reload])
-//            .on('change', function(event) { changeEvent(event); });
-//    }
-//}
+function addWatchForFileReload(isDev) {
+    if (isDev) {
+        gulp.watch([config.sass], ['styles', browserSync.reload]);
+        gulp.watch([config.client + '**/*', '!' + config.sass], browserSync.reload)
+            .on('change', function(event) { changeEvent(event); });
+    }
+    else {
+        gulp.watch([config.sass, config.js, config.html], ['build', browserSync.reload])
+            .on('change', function(event) { changeEvent(event); });
+    }
+}
 
 /**
  * When files change, log it

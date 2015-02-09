@@ -44,7 +44,7 @@ switch (environment) {
         app.use(express.static('./src/'));
         app.use(express.static('./'));
         app.use(express.static('./tmp'));
-        app.use('/*', express.static('./src/index.html'));
+        app.use('/*', express.static('./src/indexTraders.html'));
         break;
 }
 

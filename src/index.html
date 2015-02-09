@@ -14,17 +14,14 @@
 
     <title>Angular Template</title>
 
-    <!-- build:css styles/lib.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-
     <!-- build:css styles/app.css-->
     <!-- inject:css -->
+
     <link rel="stylesheet" href="/.tmp/app.css">
+
     <!-- endinject -->
     <!-- endbuild -->
+
 </head>
 
 <body>
@@ -53,12 +50,7 @@
             </div>
         </nav>
 
-        <section id="content" class="content">
-            <div ui-view></div>
-        </section>
     </div>
-
-    <!-- jquery.js must be included BEFORE angular.js, otherwise angular can't use it -->
 
     <!-- build:js js/lib.js -->
     <!-- bower:js -->
@@ -84,11 +76,11 @@
     
     <script src="/src/profile/profile.module.js"></script>
     
+    <script src="/src/framework/exception/exception.module.js"></script>
+    
     <script src="/src/framework/logger/logger.module.js"></script>
     
     <script src="/src/framework/router/router.module.js"></script>
-    
-    <script src="/src/framework/exception/exception.module.js"></script>
     
     <script src="/src/app.controller.js"></script>
     
@@ -104,19 +96,19 @@
     
     <script src="/src/profile/profile.route.js"></script>
     
-    <script src="/src/framework/logger/logger.js"></script>
-    
-    <script src="/src/framework/router/router-helper.provider.js"></script>
-    
-    <script src="/src/framework/exception/exception-handler.provider.js"></script>
-    
-    <script src="/src/framework/exception/exception.js"></script>
-    
     <script src="/src/core/directives/barchart.directive.js"></script>
     
     <script src="/src/core/filters/percentage.filter.js"></script>
     
     <script src="/src/core/services/account.service.js"></script>
+    
+    <script src="/src/framework/exception/exception-handler.provider.js"></script>
+    
+    <script src="/src/framework/exception/exception.js"></script>
+    
+    <script src="/src/framework/logger/logger.js"></script>
+    
+    <script src="/src/framework/router/router-helper.provider.js"></script>
     
     <!-- endinject -->
 
@@ -124,5 +116,6 @@
     <!-- endinject -->
 
     <!-- endbuild -->
+
 </body>
 </html>
