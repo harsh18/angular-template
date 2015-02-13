@@ -14,7 +14,7 @@
 
 	function appConfig($stateProvider, $urlRouterProvider){
 		//Otherwise Route - takes the url path
-		$urlRouterProvider.otherwise("/");
+		$urlRouterProvider.otherwise("/login");
 
 		//Otherwise Rule - takes the function
 		$urlRouterProvider.rule(otherWiseUrlCheck);
@@ -29,11 +29,17 @@
 		$stateProvider
 
 			.state('login', {
-				url : '/login/login.html'
+				url : '/login/login.html',
+				controller : function($scope){
+					console.log('login page');
+				}
 			})		
 
 			.state('dashboard', {
-				url : '/dashboard/dashboard.html'
+				url : '/dashboard/dashboard.html',
+				controller : function($scope){
+					console.log('dashboard page');
+				}
 			})
 	}
 
