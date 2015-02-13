@@ -1,9 +1,14 @@
-/*Use self executing function*/
-(function(){
+/*
+#	Author : Harsh Kumar Lamba
+#	Date : 6th Jan 2015
+#	Description : Main Application Module
+*/
+
+(
 	'use strict';
-
-	angular.module('app',[
-
-	]);
+function(){
+	angular.module('app', 
+		/* Inject Core and dependent Modules here */
+	[]);
 
 })();
