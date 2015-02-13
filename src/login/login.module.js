@@ -6,7 +6,7 @@
 
 (function(){
 	'use strict';
-	angular.module('login', 
+	angular.module('loginApp', 
 		/* Inject login dependent Modules here */
 	[]);
 })();

@@ -4,7 +4,17 @@
 #	Description : Main Application Module
 */
 
-(	function(){
+(function(){
 	'use strict';
 
-})()
+	angular
+		.module('loginApp')
+		.controller('loginController', loginController);
+
+	loginController.$inject = [];
+
+	/* @ngInject */
+	function loginController(){
+		var login = this;
+	}
+})();

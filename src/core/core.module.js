@@ -1,14 +1,15 @@
-(function() {
-    'use strict';
+/*
+#	Author : Harsh Kumar Lamba
+#	Date : 6th Jan 2015
+#	Description : Core Application Module
+*/
 
-    angular.module('app.core', [
-        // Angular modules
-        'ngAnimate', 'ngSanitize',
+(function(){
+	'use strict';
+	angular.module('core.module', 
 
-        // Our reusable framework
-        'fw.exception', 'fw.logger', 'fw.router',
-
-        // 3rd Party modules
-        'ui.router'
-    ]);
+		[	
+			/*3rd party*/
+			'ui.router'
+		]);
 })();

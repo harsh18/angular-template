@@ -1,33 +1,40 @@
-(function () {
-    'use strict';
+/*
+#	Author : Harsh Kumar Lamba
+#	Date : 6th Jan 2015
+#	Description : Core Application config
+*/
 
-    var core = angular.module('app.core');
+(function(){
+	'use strict';
+	var core = angular.module('core.module');
 
-    var config = {
-        appErrorPrefix: '[Angular Template Error] ',
-        appTitle: 'Angular Template',
-        imageBasePath: '/images/photos/',
-        unknownPersonImageSource: 'unknown_person.jpg'
-    };
+	core.config(appConfig);
 
-    core.value('config', config);
+	appConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-    core.config(configure);
+	function appConfig($stateProvider, $urlRouterProvider){
+		//Otherwise Route - takes the url path
+		$urlRouterProvider.otherwise("/");
 
-    configure.$inject =
-        ['$compileProvider', '$logProvider', 'routerHelperProvider', 'exceptionHandlerProvider'];
+		//Otherwise Rule - takes the function
+		$urlRouterProvider.rule(otherWiseUrlCheck);
 
-    /* @ngInject */
-    function configure(
-        $compileProvider, $logProvider, routerHelperProvider, exceptionHandlerProvider) {
+		otherWiseUrlCheck.$inject = ['$injector', '$location'];
 
-        $compileProvider.debugInfoEnabled(false);
+		function otherWiseUrlCheck($injector, $location){
+			//here we can check where user will be redirected - login or dashboard
+			//$location.url - used to redirect to some states
+		}
 
-        // turn debugging off/on (no info or warn)
-        if ($logProvider.debugEnabled) {
-            $logProvider.debugEnabled(true);
-        }
-        exceptionHandlerProvider.configure(config.appErrorPrefix);
-        routerHelperProvider.configure({docTitle: config.appTitle + ': '});
-    }
+		$stateProvider
+
+			.state('login', {
+				url : '/login/login.html'
+			})		
+
+			.state('dashboard', {
+				url : '/dashboard/dashboard.html'
+			})
+	}
+
 })();

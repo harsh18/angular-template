@@ -8,6 +8,9 @@
 	'use strict';
 	angular.module('app', 
 		/* Inject Core and dependent Modules here */
-	[]);
+	[
+		//Core application content injected here
+		'core.module'
+	]);
 
 })();
