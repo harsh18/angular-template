@@ -6,10 +6,7 @@
 
 (function(){
     'use strict';
-	angular.module('app', []).
-	controller('AppController', AppController);
-
-	AppController.$inject = [];
+	angular.module('app', []);
 
 	
 })();
