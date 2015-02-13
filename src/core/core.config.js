@@ -13,10 +13,8 @@
 	appConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 	function appConfig($stateProvider, $urlRouterProvider){
-		console.log($stateProvider);
-		console.log($urlRouterProvider);
 		//Otherwise Route - takes the url path
-		$urlRouterProvider.otherwise("/dashboard");
+		$urlRouterProvider.otherwise("/login");
 
 		//Otherwise Rule - takes the function
 		$urlRouterProvider.rule(otherWiseUrlCheck);
@@ -25,9 +23,7 @@
 
 		function otherWiseUrlCheck($injector, $location){
 			//here we can check where user will be redirected - login or dashboard
-			//$location.url - used to redirect to some states
-			var url = '/login';
-			console.log($location.url(url));
+			//$location.url - used to redirect to some states			
 		}
 
 		$stateProvider

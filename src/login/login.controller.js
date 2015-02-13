@@ -1,20 +1,20 @@
 /*
 #	Author : Harsh Kumar Lamba
 #	Date : 6th Jan 2015
-#	Description : Main Application Module
+#	Description : Login Module controller
 */
 
 (function(){
 	'use strict';
 
 	angular
-		.module('loginApp')
-		.controller('loginController', loginController);
+		.module('app.login')
+		.controller('LoginController', LoginController);
 
-	loginController.$inject = [];
+	//loginController.$inject = [];
 
 	/* @ngInject */
-	function loginController(){
+	function LoginController(){
 		var login = this;
 	}
 })();

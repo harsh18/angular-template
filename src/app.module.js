@@ -10,7 +10,10 @@
 		/* Inject Core and dependent Modules here */
 	[
 		//Core application content injected here
-		'core.module'
+		'core.module',
+
+		//Features
+		//'app.login'
 	]);
 
 })();
