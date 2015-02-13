@@ -4,15 +4,12 @@
 #	Description : Main Application controller
 */
 
-(
-	'use strict';
-function(){
+(function(){
+    'use strict';
 	angular.module('app', []).
-	controller('appController', appController);
+	controller('AppController', AppController);
 
-	appController.$inject = [];
+	AppController.$inject = [];
 
-	function appController(){
-		
-	}
+	
 })();

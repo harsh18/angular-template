@@ -4,9 +4,8 @@
 #	Description : Main Application Module
 */
 
-(
+(function(){
 	'use strict';
-function(){
 	angular.module('app', 
 		/* Inject Core and dependent Modules here */
 	[]);

@@ -4,9 +4,8 @@
 #	Description : Application login Module
 */
 
-(
-	'use strict';
-function(){
+(function(){
+	'use strict'
 	angular.module('login', 
 		/* Inject login dependent Modules here */
 	[]);

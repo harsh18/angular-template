@@ -4,8 +4,7 @@
 #	Description : Main Application Module
 */
 
-(
-	'use strict';
-	function(){
+(	function(){
+	'use strict'
 
-})();
+})()
