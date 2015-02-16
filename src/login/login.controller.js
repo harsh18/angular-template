@@ -17,9 +17,10 @@
 	function loginController(userService){
 		var vo = this;
 		vo.users = [];
-		vo.users.selectedItem = {};
+		vo.selectedItem = {};
 		vo.getUserData = getInputDetails;
 		vo.getSelectedItem = getSelectedItem;
+		vo.authenticate = authenticate;
 		//Method that will use service
 		function getInputDetails(){
 			return userService.getInputDetails('users')
@@ -31,8 +32,20 @@
 			vo.users = usersInfo;
 		}
 
+		//Getting information on Change of Select dropdown
 		function getSelectedItem(){
-			console.log(vo.users.selectedItem);
+			console.log(vo.selectedItem);
+		}
+
+		//Submitting the data
+		function authenticate(){
+			//Before submission need to validate form
+			vo.clientValidate = clientValidate;
+			console.log('form submitted');
+		}
+
+		function clientValidate(){
+			console.log('in validation');
 		}
 	}
 })();
