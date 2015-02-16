@@ -8,5 +8,5 @@
 	'use strict';
 	angular.module('app.login', 
 		/* Inject login dependent Modules here */
-	[]);
+	['restangular']);
 })();

@@ -14,7 +14,7 @@
 
 	function appConfig($stateProvider, $urlRouterProvider, RestangularProvider){
 		//Set base urls
-		RestangularProvider.setBaseUrl('localhost:8080');
+		RestangularProvider.setBaseUrl('http://localhost:8080');
 
 		//Otherwise Route - takes the url path
 		$urlRouterProvider.otherwise("/login");

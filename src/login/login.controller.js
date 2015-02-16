@@ -11,10 +11,18 @@
 		.module('app.login')
 		.controller('loginController', loginController);
 
-	//loginController.$inject = [];
+	loginController.$inject = ['userService'];
 
 	/* @ngInject */
-	function loginController(){
+	function loginController(userService){
 		var vo = this;
+		vo.getUserData = getInputDetails;
+		function getInputDetails(){
+			return userService.getInputDetails('users')
+					.then(getUserDataDetails);
+		}
+		function getUserDataDetails(data){
+			console.log(data);
+		}
 	}
 })();
