@@ -17,7 +17,9 @@
 	function loginController(userService){
 		var vo = this;
 		vo.users = [];
+		vo.users.selectedItem = {};
 		vo.getUserData = getInputDetails;
+		vo.getSelectedItem = getSelectedItem;
 		//Method that will use service
 		function getInputDetails(){
 			return userService.getInputDetails('users')
@@ -27,6 +29,10 @@
 		function getUserDataDetails(result){
 			var usersInfo = result.data;
 			vo.users = usersInfo;
+		}
+
+		function getSelectedItem(){
+			console.log(vo.users.selectedItem);
 		}
 	}
 })();

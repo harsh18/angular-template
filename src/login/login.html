@@ -3,7 +3,7 @@
 		<form class="form-signin" role="form">
 			<h2 class="form-signin-heading">Log In </h2>
 			<!-- Get user info from Service getUser -->
-			<select class="space-bottom-size1x selectDropdown" ng-model="vo.users.name" ng-options = "opt.id as opt.name for opt in vo.users">
+			<select class="space-bottom-size1x selectDropdown" ng-model="vo.users.selectedItem" ng-options = "opt.name for opt in vo.users" ng-change="vo.getSelectedItem()">
 				<option value="">Please select</option>
 			</select>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
