@@ -17,10 +17,6 @@
 	function loginController(userService){
 		var vo = this;
 		vo.users = [];
-		vo.select = {
-			'id' : '1',
-			'name' : 'Please select'
-		};
 		vo.getUserData = getInputDetails;
 		//Method that will use service
 		function getInputDetails(){
@@ -31,8 +27,6 @@
 		function getUserDataDetails(result){
 			var usersInfo = result.data;
 			vo.users = usersInfo;
-			//Inserting select row into array
-			vo.users.splice(0, 1, vo.select);
 		}
 	}
 })();
