@@ -10,9 +10,12 @@
 
 	core.config(appConfig);
 
-	appConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+	appConfig.$inject = ['$stateProvider', '$urlRouterProvider', 'RestangularProvider'];
 
-	function appConfig($stateProvider, $urlRouterProvider){
+	function appConfig($stateProvider, $urlRouterProvider, RestangularProvider){
+		//Set base urls
+		RestangularProvider.setBaseUrl('localhost:8080');
+
 		//Otherwise Route - takes the url path
 		$urlRouterProvider.otherwise("/login");
 

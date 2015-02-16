@@ -10,6 +10,7 @@
 
 		[	
 			/*3rd party*/
-			'ui.router'
+			'ui.router', 
+			'restangular'
 		]);
 })();
