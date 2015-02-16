@@ -20,7 +20,6 @@
 		return user;
 
 		function getInputDetails(input){
-			console.log(input);
 			return Restangular.all(input).getList();
 		}
 

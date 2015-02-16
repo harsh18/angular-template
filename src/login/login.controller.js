@@ -21,8 +21,9 @@
 			return userService.getInputDetails('users')
 					.then(getUserDataDetails);
 		}
-		function getUserDataDetails(data){
-			console.log(data);
+		function getUserDataDetails(result){
+			console.log(result.data);
+			console.log(result.status);
 		}
 	}
 })();

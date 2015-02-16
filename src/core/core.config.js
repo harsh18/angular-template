@@ -15,6 +15,8 @@
 	function appConfig($stateProvider, $urlRouterProvider, RestangularProvider){
 		//Set base urls
 		RestangularProvider.setBaseUrl('http://localhost:8080');
+		//Set full response - will help in getting Http response code as well
+		RestangularProvider.setFullResponse(true);
 
 		//Otherwise Route - takes the url path
 		$urlRouterProvider.otherwise("/login");
