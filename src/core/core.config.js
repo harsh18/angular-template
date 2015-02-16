@@ -17,7 +17,7 @@
 		$urlRouterProvider.otherwise("/login");
 
 		//Otherwise Rule - takes the function
-		$urlRouterProvider.rule(otherWiseUrlCheck);
+		//$urlRouterProvider.rule(otherWiseUrlCheck);
 
 		otherWiseUrlCheck.$inject = ['$injector', '$location'];
 
@@ -31,11 +31,13 @@
 			.state('login', {
 				url : '/login',
 				templateUrl : '/login/login.html',
+				controller : 'loginController as vo'
 			})		
 
 			.state('dashboard', {
 				url : '/dashboard',
-				templateUrl : '/dashboard/dashboard.html'
+				templateUrl : '/dashboard/dashboard.html',
+				controller : 'dashboardController as vo'
 			})
 	}
 

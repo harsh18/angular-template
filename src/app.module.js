@@ -13,7 +13,8 @@
 		'core.module',
 
 		//Features
-		//'app.login'
+		'app.login',
+		'app.dashboard'
 	]);
 
 })();

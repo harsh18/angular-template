@@ -25,24 +25,26 @@
 </head>
 
 <body>
-    <div>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand">Traders Trading</a>
-                </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">Traders Trading</a>
             </div>
-        </nav>
-        <section id="content" class="container" style="padding-top:30px">
-            <div ui-view></div>
-        </section>
-    </div>
+        </div>
+    </nav>
+
+    <!-- Section that will be updated -->
+    <section id="content" class="container">
+        <div ui-view></div>
+    </section>
+    
 
     <!-- build:js js/lib.js -->
     <!-- bower:js -->
@@ -63,50 +65,30 @@
     
     <script src="/src/app.module.js"></script>
     
-        
+    
     <script src="/src/core/core.module.js"></script>
     
-    <script src="/src/core/core.config.js"></script>
-   
+    
+    <script src="/src/dashboard/dashboard.module.js"></script>
+    
+    
     <script src="/src/login/login.module.js"></script>
-    
-    <script src="/src/login/login.controller.js"></script>
-    
-    <!--  
-    <script src="/src/framework/logger/logger.module.js"></script>
-    
-    
-    <script src="/src/framework/exception/exception.module.js"></script>
-    
-    
-    <script src="/src/framework/router/router.module.js"></script>
     
     
     <script src="/src/app.controller.js"></script>
     
     
+    <script src="/src/core/core.config.js"></script>
     
     
+    <script src="/src/dashboard/dashboard.controller.js"></script>
     
-    <script src="/src/core/core.constant.js"></script>
     
-    
+    <script src="/src/login/login.controller.js"></script>
     
     
     <script src="/src/core/directives/barchart.directive.js"></script>
     
-    
-    <script src="/src/framework/logger/logger.js"></script>
-    
-    
-    <script src="/src/framework/exception/exception-handler.provider.js"></script>
-    
-    
-    <script src="/src/framework/exception/exception.js"></script>
-    
-    
-    <script src="/src/framework/router/router-helper.provider.js"></script>
-    -->
     
     <!-- endinject -->
 

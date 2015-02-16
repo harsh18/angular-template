@@ -7,7 +7,7 @@
     'use strict';
 
     angular
-        .module('app.core')
+        .module('app')
         .directive('atBarchart', barchartDirective);
 
     barchartDirective.$inject = ['$window'];

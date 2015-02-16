@@ -16,6 +16,10 @@
 
 //Vertical Rhythm - Spacing
 @import "core/styles/base/verticalRhythm.scss";
+@import "core/styles/base/normalizerUpdated.scss";
 
 //Components 
 @import "core/styles/components/buttons.scss";
+
+//Pages
+@import "login/login.scss";

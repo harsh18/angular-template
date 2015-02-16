@@ -9,12 +9,12 @@
 
 	angular
 		.module('app.login')
-		.controller('LoginController', LoginController);
+		.controller('loginController', loginController);
 
 	//loginController.$inject = [];
 
 	/* @ngInject */
-	function LoginController(){
-		var login = this;
+	function loginController(){
+		var vo = this;
 	}
 })();
