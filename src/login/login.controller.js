@@ -16,14 +16,23 @@
 	/* @ngInject */
 	function loginController(userService){
 		var vo = this;
+		vo.users = [];
+		vo.select = {
+			'id' : '1',
+			'name' : 'Please select'
+		};
 		vo.getUserData = getInputDetails;
+		//Method that will use service
 		function getInputDetails(){
 			return userService.getInputDetails('users')
 					.then(getUserDataDetails);
 		}
+		//Promise method
 		function getUserDataDetails(result){
-			console.log(result.data);
-			console.log(result.status);
+			var usersInfo = result.data;
+			vo.users = usersInfo;
+			//Inserting select row into array
+			vo.users.splice(0, 1, vo.select);
 		}
 	}
 })();

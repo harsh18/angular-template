@@ -1,14 +1,11 @@
-<div class="login-section row">
+<div class="login-section row" ng-init="vo.getUserData()">
 	<div class="col-lg-3 center-block float-none">
 		<form class="form-signin" role="form">
 			<h2 class="form-signin-heading">Log In </h2>
 			<!-- Get user info from Service getUser -->
-			<select class="space-bottom-size1x selectDropdown">
-				<option>UserOne</option>
-				<option>UserTwo</option>
-				<option>UserThree</option>
+			<select class="space-bottom-size1x selectDropdown" ng-model="vo.users.name" ng-options = "opt as opt.name for opt in vo.users">
 			</select>
-			<button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="vo.getUserData()">Login</button>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 		</form>	
 	</div>
 </div>
