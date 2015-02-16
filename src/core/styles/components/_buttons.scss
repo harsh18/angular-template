@@ -2,3 +2,12 @@
 #	Author : Harsh Kumar Lamba
 #	Date : 9th Jan 2015
 */
+
+.btn-primary{
+	background:$gray-base;
+	color:$body-bg;
+	border:$gray-base;
+	&:hover{
+		background:rgba(0,0,0,0.7);
+	}
+}
