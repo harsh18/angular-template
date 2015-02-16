@@ -40,7 +40,7 @@
 		//Submitting the data
 		function authenticate(){
 			//Before submission need to validate form
-		//	vo.clientValidate = clientValidate;
+			//vo.clientValidate = clientValidate;
 			console.log('form submitted');
 		}
 	}
