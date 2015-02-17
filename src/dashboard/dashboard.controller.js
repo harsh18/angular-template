@@ -39,10 +39,10 @@
 				sesInfo = JSON.parse(sessionService.getSessionData());
 
 				//Check Session
-				var isSesAvail = sessionStorage.getItem('user');
-				if(!isSesAvail){
+				if(!sesInfo){
 					console.log('Not available');
 					$location.url('login');
+					return false;
 				}
 
 				//Calling Instruments service and store in instrument variable
