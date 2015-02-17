@@ -10,15 +10,17 @@
 		.module('app.dashboard')
 			.controller('dashboardController', dashboardController);
 
-		dashboardController.$inject = ['userService'];
+		dashboardController.$inject = ['userService', '$location'];
 
-		function dashboardController(userService){
+		function dashboardController(userService, $location){
 			/* vo stands for virtual object */
-			var vo = this, instruments;
+			var vo = this, instruments, sesInfo;
 
 			//Constructor
 			vo.executeSelf = executeSelf();
 
+			//User Name
+			vo.userName = sesInfo.name;
 			//Order Array object
 			vo.orders = []; 
 
@@ -31,7 +33,21 @@
 			//Delete orders
 			vo.deleteOrders = deleteOrders;
 
+			//Destroy Session
+			vo.destSession = destSession;
+
 			function executeSelf(){
+				//Getting Session Details
+				sesInfo = JSON.parse(sessionStorage.getItem('user'));
+				console.log(sesInfo);
+
+				//Check Session
+				var isSesAvail = sessionStorage.getItem('user');
+				if(!isSesAvail){
+					console.log('Not available');
+					$location.url('login');
+				}
+
 				//Calling Instruments service and store in instrument variable
 				userService.getInputDetails('instruments').then(getInstrumentDetails);
 				function getInstrumentDetails(data){
@@ -74,7 +90,7 @@
 					orderObj.symbol = instruObj.symbol;
 					orderObj.quantity = parseInt(getRoundNumber(Math.random() * 1000));
 					orderObj.limitPrice = (Math.random()*1000).toFixed(2);
-					orderObj.tradeId = 'DS';		//Hard coded tradeId need to get from session storage
+					orderObj.tradeId = sesInfo.id;		//Hard coded tradeId need to get from session storage
 					//Post Order details
 					userService.postInputDetails('orders', orderObj);
 				}
@@ -90,5 +106,9 @@
 				userService.deleteInputDetails('orders');
 			}
 
+			function destSession(){
+				sessionStorage.clear();
+				$location.url('login');
+			}
 		}
 })();

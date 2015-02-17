@@ -5,8 +5,8 @@
 			<div class="col-lg-12 user-header">
 				<h4>Trader Desktop</h4>
 				<div class="user-info text-right">
-					<span class="user-name">-- User Name --</span>
-					<a class="sign-out-link">Sign Out</a>
+					<span class="user-name" ng-bind="vo.userName"></span>
+					<a class="sign-out-link" ng-click="vo.destSession()">Sign Out</a>
 				</div>
 			</div>
 		</div>
