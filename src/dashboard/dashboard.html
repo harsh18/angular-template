@@ -41,9 +41,18 @@
 				      </tr>
 				   </thead>
 				   <tbody>
-				      <tr>
-				         <td>Tanmay</td>
-				         <td>Bangalore</td>
+				      <tr ng-repeat="order in vo.orders.data">
+				         <td ng-bind="order.id"></td>
+				         <td ng-bind="order.creationTime"></td>
+				         <td ng-bind="order.side"></td>
+				         <td ng-bind="order.symbol"></td>
+				         <td ng-bind="order.quantity"></td>
+				         <td ng-bind="order.quantityPlaced"></td>
+				         <td ng-bind="order.quantityExecuted"></td>
+				         <td ng-bind="order.limitPrice"></td>
+				         <td ng-bind="order.priority"></td>
+				         <td ng-bind="order.status"></td>
+				         <td ng-bind="order.traderId"></td>
 				      </tr>
 				   </tbody>
 				  </table>
@@ -57,22 +66,22 @@
 <div class="modal fade bs-example-modal-sm">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
+    <form ng-submit="vo.createOrders()" method="get" novalidate>
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Create Multiple Trades</h4>
       </div>
       <div class="modal-body">
-        <form>
 		  <div class="form-group">
 		    <label for="exampleInputEmail1">Email number of trades</label>
-		    <input type="text" class="form-control" placeholder="Email number of trades">
+		    <input type="text" class="form-control" placeholder="Email number of trades" required>
 		  </div>
-		</form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
+      </form>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

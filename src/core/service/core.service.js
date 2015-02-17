@@ -14,13 +14,21 @@
 	function userService(Restangular){
 		var user = {
 			//Get informtaion 
-			getInputDetails : getInputDetails
+			getInputDetails : getInputDetails,
+
+			//Post Input details
+			postInputDetails : postInputDetails
+
 		} 
 
 		return user;
 
 		function getInputDetails(input){
 			return Restangular.all(input).getList();
+		}
+
+		function postInputDetails(input ,order){
+			return Restangular.all(input).post(order);
 		}
 
 	}	
