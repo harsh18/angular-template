@@ -27,7 +27,8 @@
 		}
 
 		function getSessionData(){
-			return sessionStorage.getItem('user');
+			var sessionData = sessionStorage.getItem('user');
+			return sessionData;
 		}
 	}
 

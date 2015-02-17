@@ -36,7 +36,7 @@
 
 			function executeSelf(){
 				//Getting Session Details
-				sesInfo = JSON.parse(sessionStorage.getItem('user'));
+				sesInfo = JSON.parse(sessionService.getSessionData());
 
 				//Check Session
 				var isSesAvail = sessionStorage.getItem('user');
