@@ -17,7 +17,10 @@
 			createSession : createSession,
 
 			//Get session details
-			getSessionData : getSessionData
+			getSessionData : getSessionData,
+
+			//destroy session 
+			destroySession : destroySession
 
 		};
 		return session;
@@ -29,6 +32,10 @@
 		function getSessionData(){
 			var sessionData = sessionStorage.getItem('user');
 			return sessionData;
+		}
+
+		function destroySession(){
+			sessionStorage.clear();	
 		}
 	}
 

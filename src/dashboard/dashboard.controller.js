@@ -107,7 +107,7 @@
 			}
 
 			function destSession(){
-				sessionStorage.clear();
+				sessionService.destroySession();
 				$location.url('login');
 			}
 		}
