@@ -15,27 +15,40 @@
 
 	/* @ngInject */
 	function loginController(userService, $location){
-		var vo = this;
+		var vo = this, sesInfo;
 		vo.isValidForm = false;
 		vo.users = [];
-		//vo.selectedItem = {};
-		vo.getUserData = getInputDetails;
-		vo.getSelectedItem = getSelectedItem;
+
+		//Constructor
+		vo.executeSelf = executeSelf();
+		
+		//Form Submission -validation plus
 		vo.authenticate = authenticate;
-		//Method that will use service
-		function getInputDetails(){
-			return userService.getInputDetails('users')
+
+		function executeSelf(){
+			//Getting Session Details
+			sesInfo = JSON.parse(sessionStorage.getItem('user'));
+
+			//Check Session
+			var isSesAvail = sessionStorage.getItem('user');
+			if(isSesAvail){
+				console.log('Available');
+				$location.url('dashboard');
+			}
+
+			//Get the registered user data
+			userService.getInputDetails('users')
 					.then(getUserDataDetails);
-		}
-		//Promise method
-		function getUserDataDetails(result){
-			var usersInfo = result.data;
-			vo.users = usersInfo;
+
+			function getUserDataDetails(result){
+				var usersInfo = result.data;
+				vo.users = usersInfo;
+			}
 		}
 
-		//Getting information on Change of Select dropdown
-		function getSelectedItem(){
-			console.log(vo.selectedItem);
+		function getUserData(){
+			return userService.getInputDetails('users')
+					.then(getUserDataDetails);
 		}
 
 		//Submitting the data
