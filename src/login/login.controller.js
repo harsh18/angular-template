@@ -11,13 +11,14 @@
 		.module('app.login')
 		.controller('loginController', loginController);
 
-	loginController.$inject = ['userService'];
+	loginController.$inject = ['userService', '$location'];
 
 	/* @ngInject */
-	function loginController(userService){
+	function loginController(userService, $location){
 		var vo = this;
+		vo.isValidForm = false;
 		vo.users = [];
-		vo.selectedItem = {};
+		//vo.selectedItem = {};
 		vo.getUserData = getInputDetails;
 		vo.getSelectedItem = getSelectedItem;
 		vo.authenticate = authenticate;
@@ -38,9 +39,15 @@
 		}
 
 		//Submitting the data
-		function authenticate(){
+		function authenticate(isValid){
 			//Before submission need to validate form
-			//vo.clientValidate = clientValidate;
+			console.log(isValid);
+			if(isValid == false){
+				console.log('false', 'validation fails');
+				vo.isValidForm = true;
+				return false;
+			}
+			console.log(vo.selectedItem);
 			console.log('form submitted');
 		}
 	}

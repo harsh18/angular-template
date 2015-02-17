@@ -1,0 +1,17 @@
+/*
+#	Author : Harsh Kumar Lamba
+#	Date : 9th Jan 2015
+#	Description : Error sass file
+*/
+
+.has-error{
+	border-color:rgba(255,0,0,1);
+	margin-bottom:5px;
+}
+.has-error-container{
+	font-size:1em;
+	font-style:italic;
+	color:rgba(255,0,0,1);
+	display:block;
+	margin-bottom:10px;
+}

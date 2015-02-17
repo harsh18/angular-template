@@ -1,11 +1,12 @@
 <div class="login-section row" ng-init="vo.getUserData()">
 	<div class="col-lg-3 center-block float-none">
-		<form class="form-signin" role="form" method="post" name="loginForm" ng-submit="vo.authenticate(loginForm.$valid)" novalidate>
+		<form class="form-signin" role="form" method="post" name="loginForm" ng-submit="vo.authenticate(loginForm.users.$valid)" novalidate>
 			<h2 class="form-signin-heading">Log In </h2>
 			<!-- Get user info from Service getUser -->
-			<select name="users" class="space-bottom-size1x selectDropdown" ng-model="vo.selectedItem" ng-options = "opt.name for opt in vo.users" ng-change="vo.getSelectedItem()" required>
+			<select name="users" class="space-bottom-size1x selectDropdown" ng-model="vo.selectedItem" ng-options = "opt.name for opt in vo.users" required ng-class="{'has-error' : loginForm.users.$invalid && vo.isValidForm}">
 				<option value="">Please select</option>
 			</select>
+			<span ng-show="loginForm.users.$invalid && vo.isValidForm" class="has-error-container">Please select user</span>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 		</form>	
 	</div>
