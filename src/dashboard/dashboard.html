@@ -1,1 +1,78 @@
-<h3>Dashboard</h3>
+<div class="row">
+	<div class="col-lg-12 dashboard-section">
+		<!-- Table header with user info -->
+		<div class="row">	
+			<div class="col-lg-12 user-header">
+				<h4>Trader Desktop</h4>
+				<div class="user-info text-right">
+					<span class="user-name">-- User Name --</span>
+					<a class="sign-out-link">Sign Out</a>
+				</div>
+			</div>
+		</div>
+		<div class="row space-top-inset-size--1x space-bottom-inset-size--1x">
+			<div class="col-xs-10">
+				<button type="button" class="btn btn-primary custom-size" data-toggle="modal" data-target=".bs-example-modal-sm">Trade</button>
+				<button class="btn btn-primary custom-size" type="submit">Delete All</button>
+				<button class="btn btn-primary custom-size" type="submit">Refresh</button>
+			</div>
+			<div class="col-xs-2">
+				<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="table-responsive">
+				  <table class="table">
+				  	<thead>
+				      <tr>
+				         <th>Id</th>
+				         <th>Creation Time</th>
+				         <th>Side</th>
+				         <th>Symbol</th>
+				         <th>Quantity</th>
+				         <th>Placed</th>
+				         <th>Executed</th>
+				         <th>Limit Price</th>
+				         <th>Priority</th>
+				         <th>Status</th>
+				         <th>Traders</th>				         
+				      </tr>
+				   </thead>
+				   <tbody>
+				      <tr>
+				         <td>Tanmay</td>
+				         <td>Bangalore</td>
+				      </tr>
+				   </tbody>
+				  </table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal Popup -->
+<div class="modal fade bs-example-modal-sm">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Create Multiple Trades</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Email number of trades</label>
+		    <input type="text" class="form-control" placeholder="Email number of trades">
+		  </div>
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

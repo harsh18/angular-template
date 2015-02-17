@@ -1,0 +1,31 @@
+/*
+#	Author : Harsh Kumar Lamba
+#	Date : 6th Jan 2015
+#	Description : Dashboard sass file
+*/
+.dashboard-section{
+	background:$dashboard-section-bg;
+	border:1px solid rgba(0,0,0,1);
+	.inline-element{
+		display:inline;
+	}
+	.user-header{
+	border-bottom:1px solid rgba(0,0,0,0.8);
+		h4{
+			display:inline-block;
+			font-size:1.4rem;
+		}
+		.user-info{
+			float:right;
+			padding-top:5px;
+			.user-name{
+				font-size:1.6rem;
+				font-style:italic;
+			}
+			.sign-out-link{
+				color:$sign-out-link;
+				font-size:1.2rem;
+			}
+		}
+	}
+}

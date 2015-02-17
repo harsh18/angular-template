@@ -7,7 +7,11 @@
 	background:$gray-base;
 	color:$body-bg;
 	border:$gray-base;
+	border-radius:0;
 	&:hover{
 		background:rgba(0,0,0,0.7);
+	}
+	.custom-size{
+		width:90px;height:25px;
 	}
 }
