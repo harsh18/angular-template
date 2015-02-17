@@ -41,14 +41,19 @@
 		//Submitting the data
 		function authenticate(isValid){
 			//Before submission need to validate form
-			console.log(isValid);
 			if(isValid == false){
-				console.log('false', 'validation fails');
 				vo.isValidForm = true;
 				return false;
 			}
-			console.log(vo.selectedItem);
-			console.log('form submitted');
+			vo.saveUserData = saveUserData();
+			function saveUserData(){
+				var user = JSON.stringify(vo.selectedItem);
+				//Store in session storage
+				sessionStorage.setItem('user', user);
+				console.log('form submitted');	
+				//Moving to dashboard
+				$location.url('dashboard');
+			}
 		}
 	}
 })();
