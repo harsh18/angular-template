@@ -13,8 +13,8 @@
 		<div class="row space-top-inset-size--1x space-bottom-inset-size--1x">
 			<div class="col-xs-10">
 				<button type="button" class="btn btn-primary custom-size" data-toggle="modal" data-target=".bs-example-modal-sm">Trade</button>
-				<button class="btn btn-primary custom-size" type="submit">Delete All</button>
-				<button class="btn btn-primary custom-size" type="submit">Refresh</button>
+				<button class="btn btn-primary custom-size" type="submit" ng-click="vo.deleteOrders()">Delete All</button>
+				<button class="btn btn-primary custom-size" type="submit" ng-click="vo.getOrders()">Refresh</button>
 			</div>
 			<div class="col-xs-2">
 				<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
@@ -74,7 +74,7 @@
       <div class="modal-body">
 		  <div class="form-group">
 		    <label for="exampleInputEmail1">Email number of trades</label>
-		    <input type="text" class="form-control" placeholder="Email number of trades" required>
+		    <input type="text" class="form-control" ng-model="vo.numberOfOrders" placeholder="Email number of trades" required>
 		  </div>
       </div>
       <div class="modal-footer">

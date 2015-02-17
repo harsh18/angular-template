@@ -23,42 +23,71 @@
 			vo.orders = []; 
 
 			//Getting orders from server
-			//vo.getOrders = getOrders();
+			vo.getOrders = getOrders;
 
 			//Creating orders 
 			vo.createOrders = createOrders;
 
+			//Delete orders
+			vo.deleteOrders = deleteOrders;
+
 			function executeSelf(){
-				console.log('Getting Instruments');
 				//Calling Instruments service and store in instrument variable
 				userService.getInputDetails('instruments').then(getInstrumentDetails);
 				function getInstrumentDetails(data){
-					console.log(data);
+					console.log('Instruments', data);
 					instruments = data
 				}
+				//Calling orders on load
+				getOrders();
+			}
 
-				console.log('Getting orders');
+			function getOrders(){
 				//Calling Order Service and store in model orders
 				userService.getInputDetails('orders').then(getOrderDetails);
 				function getOrderDetails(data){
 					var dataOrder = data;
 					vo.orders = dataOrder;
-					console.log(vo.orders);
 				}
-
 			}
 
 			function createOrders(){
 				console.log('Creating orders');
-				var orderObj = {
-				    "side": "Buy",
-				    "symbol": "AAPL",
-				    "quantity": 10000,
-				    "limitPrice": 426.24,
-				    "traderId": "AM"
-				};
-				//Post Order details
-				userService.postInputDetails('orders', orderObj);
+				createOrdersObject();
+			}
+
+			//Create Order object with random values
+			function createOrdersObject(){
+				var instrumentObjLen = instruments.data.length, 
+				numberOfOrders = vo.numberOfOrders,
+				ranInstrumentNum,
+				instruObj = {},
+				orderObj = {},
+				stringArr = ['Buy', 'Sell'],
+				strArrPos;
+				for (var i=0; i<numberOfOrders;i++){
+					var quaObj, limiObj;
+					ranInstrumentNum = getRoundNumber(getRandomArbitrary(0, instrumentObjLen));
+					instruObj = instruments.data[ranInstrumentNum];
+					strArrPos = getRoundNumber(getRandomArbitrary(0, stringArr.length));
+					orderObj.side = stringArr[strArrPos];
+					orderObj.symbol = instruObj.symbol;
+					orderObj.quantity = parseInt(getRoundNumber(Math.random() * 1000));
+					orderObj.limitPrice = (Math.random()*1000).toFixed(2);
+					orderObj.tradeId = 'DS';		//Hard coded tradeId need to get from session storage
+					//Post Order details
+					userService.postInputDetails('orders', orderObj);
+				}
+				function getRoundNumber(num){
+					return Math.round(num);
+				}
+				function getRandomArbitrary(min, max) {
+				  return Math.random() * (max - min) + min;
+				}
+			}
+
+			function deleteOrders(){
+				userService.deleteInputDetails('orders');
 			}
 
 		}

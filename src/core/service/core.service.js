@@ -17,7 +17,10 @@
 			getInputDetails : getInputDetails,
 
 			//Post Input details
-			postInputDetails : postInputDetails
+			postInputDetails : postInputDetails,
+
+			//Delete Orders
+			deleteInputDetails : deleteInputDetails
 
 		} 
 
@@ -31,5 +34,9 @@
 			return Restangular.all(input).post(order);
 		}
 
+		function deleteInputDetails(input){
+			console.log('in');
+			return Restangular.all(input).remove();
+		}
 	}	
 })();
