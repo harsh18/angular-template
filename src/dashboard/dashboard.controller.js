@@ -10,17 +10,15 @@
 		.module('app.dashboard')
 			.controller('dashboardController', dashboardController);
 
-		dashboardController.$inject = ['userService', '$location'];
+		dashboardController.$inject = ['userService', '$location', 'sessionService'];
 
-		function dashboardController(userService, $location){
+		function dashboardController(userService, $location, sessionService){
 			/* vo stands for virtual object */
 			var vo = this, instruments, sesInfo;
 
 			//Constructor
-			vo.executeSelf = executeSelf();
+			vo.executeSelf = executeSelf;
 
-			//User Name
-			vo.userName = sesInfo.name;
 			//Order Array object
 			vo.orders = []; 
 
@@ -55,6 +53,9 @@
 				}
 				//Calling orders on load
 				getOrders();
+
+				//User Name
+				vo.userName = sesInfo.name;
 			}
 
 			function getOrders(){

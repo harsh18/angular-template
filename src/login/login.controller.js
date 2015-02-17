@@ -11,16 +11,16 @@
 		.module('app.login')
 		.controller('loginController', loginController);
 
-	loginController.$inject = ['userService', '$location'];
+	loginController.$inject = ['userService', '$location', 'sessionService'];
 
 	/* @ngInject */
-	function loginController(userService, $location){
+	function loginController(userService, $location, sessionService){
 		var vo = this, sesInfo;
 		vo.isValidForm = false;
 		vo.users = [];
 
 		//Constructor
-		vo.executeSelf = executeSelf();
+		vo.executeSelf = executeSelf;
 		
 		//Form Submission -validation plus
 		vo.authenticate = authenticate;
@@ -61,8 +61,9 @@
 			vo.saveUserData = saveUserData();
 			function saveUserData(){
 				var user = JSON.stringify(vo.selectedItem);
-				//Store in session storage
-				sessionStorage.setItem('user', user);
+				//Store in session storage - Session service
+				sessionService.createSession(user);
+				//sessionStorage.setItem('user', user);
 				console.log('form submitted');	
 				//Moving to dashboard
 				$location.url('dashboard');

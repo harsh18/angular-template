@@ -1,4 +1,4 @@
-<div class="login-section row">
+<div class="login-section row" ng-init="vo.executeSelf()">
 	<div class="col-lg-3 center-block float-none">
 		<form class="form-signin" role="form" method="post" name="loginForm" ng-submit="vo.authenticate(loginForm.users.$valid)" novalidate>
 			<h2 class="form-signin-heading">Log In </h2>
