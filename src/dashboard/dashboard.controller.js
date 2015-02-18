@@ -68,16 +68,20 @@
 
 			function createOrders(){
 				var strArr = ['Buy', 'Sell'], 
-				orderObj = ordrObjcreate();
+					orderObjArr = [], orderObj;
 
+				for(var i=0; i<vo.numberOfOrders; i++){
+					orderObj = ordrObjcreate();
+					orderObjArr.push(orderObj);					
+				}
 				//Service to send data
-				orderService.postInputDetails('orders', orderObj);
+				orderService.postInputDetails('orders', orderObjArr);
 
 				function ordrObjcreate(){
 					var ordrObj = {
-						side : strArr[Math.round(getRandomArbitrary(0, strArr.length))],
+						side : strArr[Math.round(Math.floor(getRandomArbitrary(0, strArr.length)))],
 						symbol : instruments.data[Math.round(getRandomArbitrary(0, instruments.data.length))].symbol,
-						quantity : vo.numberOfOrders,
+						quantity : Math.round(Math.random()*1000),
 						limitPrice : (Math.random()*1000).toFixed(2),
 						traderId : sesInfo.id
 					}

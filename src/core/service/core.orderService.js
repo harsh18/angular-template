@@ -28,8 +28,14 @@
 		}
 
 		function postInputDetails(input ,order){
-			console.log(order);
-			return Restangular.all(input).post(order);
+			var reponseArr = [];
+			for(var i=0; i<order.length; i++){
+				Restangular.all(input).post(order[i]).then(responseObject);
+			}
+			function responseObject(response){
+				console.log(response.status)
+				//reponseArr.push(data);
+			}
 		}
 	}	
 })();
