@@ -22,6 +22,16 @@
 			//Order Array object
 			vo.orders = []; 
 
+			//Assets for bar chart - Model to be used for bar chart
+			/*
+			vo.assets = [
+				{"asset_class":"US Stocks","market_value":586866,"percent_allocation":0.3,"percent_return":0.068},
+				{"asset_class":"Foreign Stocks","market_value":293433,"percent_allocation":0.15,"percent_return":0.084},
+				{"asset_class":"Emerging Markets","market_value":293433,"percent_allocation":0.15,"percent_return":0.127},
+				{"asset_class":"Bonds","market_value":743364,"percent_allocation":0.38,"percent_return":0.022},
+				{"asset_class":"Cash","market_value":39124,"percent_allocation":0.01,"percent_return":0}
+			]*/
+
 			//Getting orders from server
 			vo.getOrders = getOrders;
 
@@ -86,7 +96,9 @@
 						traderId : sesInfo.id
 					}
 					return ordrObj;
-				}				
+				}	
+				console.log(orderObjArr);
+				//vo.assets = orderObjArr;			
 			}
 
 			function getRandomArbitrary(min, max) {

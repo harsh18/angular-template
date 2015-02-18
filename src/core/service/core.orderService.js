@@ -34,7 +34,6 @@
 			}
 			function responseObject(response){
 				console.log(response.status)
-				//reponseArr.push(data);
 			}
 		}
 	}	
