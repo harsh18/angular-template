@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "traders";
+  src:url("/src/core/assets/fonts/traders.eot");
+  src:url("/src/core/assets/fonts/traders.eot?#iefix") format("embedded-opentype"),
+    url("/src/core/assets/fonts/traders.woff") format("woff"),
+    url("/src/core/assets/fonts/traders.ttf") format("truetype"),
+    url("/src/core/assets/fonts/traders.svg#traders") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[data-icon]:before {
+  font-family: "traders" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "traders" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bar-chart:before {
+  content: "a";
+}
+.icon-table:before {
+  content: "b";
+}

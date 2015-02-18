@@ -1,4 +1,4 @@
-<div class="row" ng-init="vo.executeSelf()">
+<div class="row" ng-init="vo.executeSelf() ; vo.isView = false">
 	<div class="col-lg-12 dashboard-section">
 		<!-- Table header with user info -->
 		<div class="row">	
@@ -11,17 +11,17 @@
 			</div>
 		</div>
 		<div class="row space-top-inset-size--1x space-bottom-inset-size--1x">
-			<div class="col-xs-10">
+			<div class="col-xs-9">
 				<button type="button" class="btn btn-primary custom-size" data-toggle="modal" data-target=".bs-example-modal-sm">Trade</button>
 				<button class="btn btn-primary custom-size" type="submit" ng-click="vo.deleteOrders()">Delete All</button>
 				<button class="btn btn-primary custom-size" type="submit" ng-click="vo.getOrders()">Refresh</button>
 			</div>
-			<div class="col-xs-2">
-				<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
-				<span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+			<div class="col-xs-3 text-right">
+				<div class="icon-font selected" ng-click="vo.isView = false" ng-class="{'selected': vo.isView == false}"><span class="icon icon-table" aria-hidden="true"></span></div>
+				<div class="icon-font" ng-click="vo.isView = true" ng-class="{'selected': vo.isView == true}"><span class="icon icon-bar-chart" aria-hidden="true"></span></div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" ng-show="vo.isView == false">
 			<div class="col-lg-12">
 				<div class="table-responsive">
 				  <table class="table">
@@ -57,6 +57,11 @@
 				   </tbody>
 				  </table>
 				</div>
+			</div>
+		</div>
+		<div class="row" ng-show="vo.isView == true">
+			<div class="col-lg-12">
+				<h2>Graph section</h2>
 			</div>
 		</div>
 	</div>

@@ -1,0 +1,26 @@
+/*
+#	Author : Harsh Kumar Lamba
+#	Date : 6th Jan 2015
+#	Description : Font-icons style
+*/
+.icon-font{
+	width:30px;
+	height:25px;
+	text-align:center;
+	font-size:2rem;
+	display:inline-block;
+	background:$black;
+	color:$body-bg;
+	span{
+		vertical-align:middle;
+	}
+	&:hover{
+		cursor:pointer;
+		background:#bfbfbf;
+		color:$black;
+	}
+	&.selected{
+		background:#bfbfbf;
+		color:$black;
+	}
+}

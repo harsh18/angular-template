@@ -12,7 +12,7 @@
 
 //Helpers - Variables and overwritten variables
 @import "core/styles/helpers/variables.scss";
-
+@import "core/styles/base/fontIcons.scss";
 
 //Vertical Rhythm - Spacing
 @import "core/styles/base/verticalRhythm.scss";
@@ -22,6 +22,7 @@
 @import "core/styles/components/buttons.scss";
 @import "core/styles/components/selectDropdown.scss";
 @import "core/styles/components/error.scss";
+@import "core/styles/components/fontIconStyle.scss";
 
 //Pages
 @import "login/login.scss";
