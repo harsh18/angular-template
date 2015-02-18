@@ -21,8 +21,9 @@
 				<div class="icon-font" ng-click="vo.isView = true" ng-class="{'selected': vo.isView == true}"><span class="icon icon-bar-chart" aria-hidden="true"></span></div>
 			</div>
 		</div>
-		<div class="row" ng-show="vo.isView == false">
-			<div class="col-lg-12">
+		<!-- Table View -->
+		<div class="row" ng-if="vo.isView == false">
+			<div class="col-lg-12 space-left-inset-size-none space-right-inset-size-none">
 				<div class="table-responsive">
 				  <table class="table">
 				  	<thead>
@@ -59,7 +60,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="row" ng-show="vo.isView == true">
+
+		<!-- Graph View -->
+		<div class="row" ng-if="vo.isView">
 			<div class="col-lg-12">
 				<h2>Graph section</h2>
 			</div>

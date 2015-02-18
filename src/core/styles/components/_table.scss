@@ -1,0 +1,23 @@
+/*
+#	Author : Harsh Kumar Lamba
+#	Date : 6th Jan 2015
+#	Description : Table view updated
+*/
+.table{
+	> thead{
+		> tr{
+			background:$grey;
+			td{
+				
+			}
+		}
+	}
+	> tbody{
+		> tr {
+			background:$body-bg;
+			td{
+				border-color:$divider;
+			}
+		}
+	}
+}

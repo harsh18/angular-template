@@ -10,9 +10,9 @@
 		.module('app.dashboard')
 			.controller('dashboardController', dashboardController);
 
-		dashboardController.$inject = ['userService', '$location', 'sessionService'];
+		dashboardController.$inject = ['userService', '$location', 'sessionService', 'orderService'];
 
-		function dashboardController(userService, $location, sessionService){
+		function dashboardController(userService, $location, sessionService, orderService){
 			/* vo stands for virtual object */
 			var vo = this, instruments, sesInfo;
 
@@ -48,7 +48,6 @@
 				//Calling Instruments service and store in instrument variable
 				userService.getInputDetails('instruments').then(getInstrumentDetails);
 				function getInstrumentDetails(data){
-					console.log('Instruments', data);
 					instruments = data
 				}
 				//Calling orders on load
@@ -60,7 +59,7 @@
 
 			function getOrders(){
 				//Calling Order Service and store in model orders
-				userService.getInputDetails('orders').then(getOrderDetails);
+				orderService.getInputDetails('orders').then(getOrderDetails);
 				function getOrderDetails(data){
 					var dataOrder = data;
 					vo.orders = dataOrder;
@@ -68,38 +67,26 @@
 			}
 
 			function createOrders(){
-				console.log('Creating orders');
-				createOrdersObject();
+				var strArr = ['Buy', 'Sell'], 
+				orderObj = ordrObjcreate();
+
+				//Service to send data
+				orderService.postInputDetails('orders', orderObj);
+
+				function ordrObjcreate(){
+					var ordrObj = {
+						side : strArr[Math.round(getRandomArbitrary(0, strArr.length))],
+						symbol : instruments.data[Math.round(getRandomArbitrary(0, instruments.data.length))].symbol,
+						quantity : vo.numberOfOrders,
+						limitPrice : (Math.random()*1000).toFixed(2),
+						traderId : sesInfo.id
+					}
+					return ordrObj;
+				}				
 			}
 
-			//Create Order object with random values
-			function createOrdersObject(){
-				var instrumentObjLen = instruments.data.length, 
-				numberOfOrders = vo.numberOfOrders,
-				ranInstrumentNum,
-				instruObj = {},
-				orderObj = {},
-				stringArr = ['Buy', 'Sell'],
-				strArrPos;
-				for (var i=0; i<numberOfOrders;i++){
-					var quaObj, limiObj;
-					ranInstrumentNum = getRoundNumber(getRandomArbitrary(0, instrumentObjLen));
-					instruObj = instruments.data[ranInstrumentNum];
-					strArrPos = getRoundNumber(getRandomArbitrary(0, stringArr.length));
-					orderObj.side = stringArr[strArrPos];
-					orderObj.symbol = instruObj.symbol;
-					orderObj.quantity = parseInt(getRoundNumber(Math.random() * 1000));
-					orderObj.limitPrice = (Math.random()*1000).toFixed(2);
-					orderObj.tradeId = sesInfo.id;		//Hard coded tradeId need to get from session storage
-					//Post Order details
-					userService.postInputDetails('orders', orderObj);
-				}
-				function getRoundNumber(num){
-					return Math.round(num);
-				}
-				function getRandomArbitrary(min, max) {
-				  return Math.random() * (max - min) + min;
-				}
+			function getRandomArbitrary(min, max) {
+			  return Math.random() * (max - min) + min;
 			}
 
 			function deleteOrders(){

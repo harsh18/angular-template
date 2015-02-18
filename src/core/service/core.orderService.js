@@ -1,30 +1,27 @@
 /*
 #	Author : Harsh Kumar Lamba
 #	Date : 6th Jan 2015
-#	Description : Main Application Service file - Get user 
+#	Description : Order Service - Get and post
 */
 
 (function(){
 	'use strict';
 	angular.module('core.module')
-		.factory('userService', userService);
+		.factory('orderService', orderService);
 
-	userService.$inject = ['Restangular'];
+	orderService.$inject = ['Restangular'];
 
-	function userService(Restangular){
-		var user = {
+	function orderService(Restangular){
+		var order = {
 			//Get informtaion 
 			getInputDetails : getInputDetails,
 
 			//Post Input details
 			postInputDetails : postInputDetails,
 
-			//Delete Orders
-			deleteInputDetails : deleteInputDetails
-
 		} 
 
-		return user;
+		return order;
 
 		function getInputDetails(input){
 			return Restangular.all(input).getList();
@@ -33,11 +30,6 @@
 		function postInputDetails(input ,order){
 			console.log(order);
 			return Restangular.all(input).post(order);
-		}
-
-		function deleteInputDetails(input){
-			console.log('in');
-			return Restangular.all(input).remove();
 		}
 	}	
 })();
