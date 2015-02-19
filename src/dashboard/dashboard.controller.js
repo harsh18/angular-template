@@ -47,6 +47,21 @@
 			//Destroy Session
 			vo.destSession = destSession;
 
+			//###############
+			//Socket - Events
+			//###############
+			//Order created
+			socketService.on('orderCreatedEvent', orderCreatedEvent);
+
+			//Order Placement
+			socketService.on('placementCreatedEvent', placementCreatedEvent);
+
+			//Order executed
+			socketService.on('executionCreatedEvent', executionCreatedEvent);	
+
+			//Delete orders
+			socketService.on('allOrdersDeletedEvent', allOrdersDeletedEvent);		
+
 			function executeSelf(){
 				//Getting Session Details
 				sesInfo = JSON.parse(sessionService.getSessionData());
@@ -116,43 +131,32 @@
 				sessionService.destroySession();
 				$location.url('login');
 			}
+			
+			function orderCreatedEvent(data){
+				vo.orders.data.push(data);
+			}
 
-			//###############
-			//Socket - Events
-			//###############
-			//Order created
-			socketService.on('orderCreatedEvent', function (data) {
-			    console.log('orderCreatedEvent');
-	            vo.orders.data.push(data);
-			});
-
-			//Order Placement
-			socketService.on('placementCreatedEvent', function (data) {
-			    console.log('placementCreatedEvent');
-                angular.forEach(vo.orders.data, function (order,index) {
+			function placementCreatedEvent(data){
+				angular.forEach(vo.orders.data, function (order,index) {
 	                if (order.id == data.orderId) {
 	                    vo.orders.data[index].quantityPlaced = data.quantityPlaced;
 	                    vo.orders.data[index].status = data.status;
 	                 }
 	            });
-			});
+			}
 
-			//Order executed
-			socketService.on('executionCreatedEvent', function (data) {
-                console.log('executionCreatedEvent');
-                angular.forEach(vo.orders.data, function (order,index) {
+			function executionCreatedEvent(data){
+				angular.forEach(vo.orders.data, function (order,index) {
 	                if (order.id == data.orderId) { 
 	                    vo.orders.data[index].quantityExecuted = data.quantityExecuted;
 	                    vo.orders.data[index].executionPrice = data.executionPrice;
 	                    vo.orders.data[index].status = data.status;
 	                 }
               	});
-			});
+			}
 
-			//Delete orders
-			socketService.on('allOrdersDeletedEvent', function (data) {
-                console.log('allOrdersDeletedEvent');
-                vo.orders.data = [];
-			});
+			function allOrdersDeletedEvent(){
+				vo.orders.data = [];
+			}
 		}
 })();
