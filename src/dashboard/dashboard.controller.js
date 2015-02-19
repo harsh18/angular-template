@@ -10,14 +10,17 @@
 		.module('app.dashboard')
 			.controller('dashboardController', dashboardController);
 
-		dashboardController.$inject = ['userService', '$location', 'sessionService', 'orderService'];
+		dashboardController.$inject = ['$scope', 'userService', '$location', 'sessionService', 'orderService'];
 
-		function dashboardController(userService, $location, sessionService, orderService){
+		function dashboardController($scope, userService, $location, sessionService, orderService){
 			/* vo stands for virtual object */
-			var vo = this, instruments, sesInfo;
+			var vo = this, instruments, sesInfo, socket;
 
 			//Constructor
 			vo.executeSelf = executeSelf;
+
+			//Socket Config
+			socket = io.connect('http://localhost:8080');
 
 			//Order Array object
 			vo.orders = []; 
@@ -31,6 +34,51 @@
 				{"asset_class":"Bonds","market_value":743364,"percent_allocation":0.38,"percent_return":0.022},
 				{"asset_class":"Cash","market_value":39124,"percent_allocation":0.01,"percent_return":0}
 			]*/
+
+			//###############
+			//Socket - Events
+			//###############
+			//Order created
+			socket.on('orderCreatedEvent', function (data) {
+	            $scope.$apply(function() {
+	                vo.orders.data.push(data);
+	            });
+
+	        });
+
+			//Order Placement
+			socket.on('placementCreatedEvent', function (data) {
+	            $scope.$apply(function() {
+	            	console.log(data);
+	                angular.forEach(vo.orders.data, function (order,index) {
+	                if (order.id == data.orderId) {
+	                    vo.orders.data[index].quantityPlaced = data.quantityPlaced;
+	                    vo.orders.data[index].status = data.status;
+	                 }
+	              });
+	            });
+	        });
+
+			//Order executed
+			socket.on('executionCreatedEvent', function (data) {
+	            $scope.$apply(function() {
+	                angular.forEach(vo.orders.data, function (order,index) {
+	                if (order.id == data.orderId) { 
+	                    vo.orders.data[index].quantityExecuted = data.quantityExecuted;
+	                    vo.orders.data[index].executionPrice = data.executionPrice;
+	                    vo.orders.data[index].status = data.status;
+	                 }
+	              });
+	            });
+	        });
+
+	        //Delete orders
+	        socket.on('allOrdersDeletedEvent', function (data) {
+	            $scope.$apply(function() {
+	                vo.orders.data = [];
+	            });
+	            
+	        });
 
 			//Getting orders from server
 			vo.getOrders = getOrders;
