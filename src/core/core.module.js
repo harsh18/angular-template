@@ -11,6 +11,7 @@
 		[	
 			/*3rd party*/
 			'ui.router', 
-			'restangular'
+			'restangular',
+			'btford.socket-io'
 		]);
 })();
