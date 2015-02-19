@@ -30,10 +30,7 @@
 		function postInputDetails(input ,order){
 			var reponseArr = [];
 			for(var i=0; i<order.length; i++){
-				Restangular.all(input).post(order[i]).then(responseObject);
-			}
-			function responseObject(response){
-				console.log(response.status)
+				Restangular.all(input).post(order[i]);
 			}
 		}
 	}	

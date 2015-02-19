@@ -87,10 +87,15 @@
 
 			function getOrders(){
 				//Calling Order Service and store in model orders
-				orderService.getInputDetails('orders').then(getOrderDetails);
+				orderService.getInputDetails('order').then(getOrderDetails, errorGetOrder);
 				function getOrderDetails(data){
+					console.log(data.status);
 					var dataOrder = data;
 					vo.orders = dataOrder;
+				}
+				function errorGetOrder(res){
+					console.log('in', res);
+					return false;
 				}
 			}
 
