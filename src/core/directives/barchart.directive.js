@@ -28,11 +28,11 @@
 
         function link (scope, element, attrs) {
 
-            var margins = {top: 20, right: 150, bottom: 20, left: 70}, height = 600, width = 1000;
+            var margins = {top: 20, right: 150, bottom: 20, left: 70}, height = 600 - margins.top - margins.bottom, width = 1000 ;
             var svg = d3.select(element[0]).append("svg")
                 .attr('width', width)
                 .attr('height', height)
-                .attr("transform", "translate(0," + (margins.top) + ")");
+                //.attr("transform", "translate(0," + (margins.top) + ")");
                 
             //Watching data
             scope.$watch('val', drawChart, true);
@@ -47,8 +47,12 @@
                 var traderOrderNew = n, traderOrderOld = o, xMin = margins.left, xMax = width - margins.left - margins.right, yMin = height - margins.bottom - margins.top,
                     yMax = margins.bottom,
 
+                    xRangeAxis = d3.scale.linear()
+                                .range([xMin, width])
+                                .domain([0, 1]),
+
                     xRange = d3.scale.linear()
-                                .range([xMin, xMax])
+                                .range([xMin, width])
                                 .domain([margins.left, d3.max(traderOrderNew, function(d){ return d.quantity})]),
                     /*
                         d3.scale.ordinal()
@@ -61,10 +65,10 @@
                                 .domain(traderOrderNew.map(function(d){ return d.id})),
 
                     xAxis = d3.svg.axis()
-                                .scale(xRange)
+                                .scale(xRangeAxis)
                                 .orient('top')
-                                .tickFormat(d3.format(".0%"))
-                                .ticks(3),
+                                //.tickFormat(d3.format(".0%"))
+                                .ticks(3, "%"),
 
                     yAxis = d3.svg.axis()
                                 .scale(yRange)
