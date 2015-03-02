@@ -26,14 +26,22 @@
 			vo.orders = []; 
 
 			//Assets for bar chart - Model to be used for bar chart
-			/*
+			
 			vo.assets = [
 				{"asset_class":"US Stocks","market_value":586866,"percent_allocation":0.3,"percent_return":0.068},
 				{"asset_class":"Foreign Stocks","market_value":293433,"percent_allocation":0.15,"percent_return":0.084},
 				{"asset_class":"Emerging Markets","market_value":293433,"percent_allocation":0.15,"percent_return":0.127},
 				{"asset_class":"Bonds","market_value":743364,"percent_allocation":0.38,"percent_return":0.022},
 				{"asset_class":"Cash","market_value":39124,"percent_allocation":0.01,"percent_return":0}
-			]*/
+			]
+
+			vo.assets = [
+              {"id": 35, "quantity": 1000, "quantityPlaced": 450, "quantityExecuted" : 500},
+              {"id": 36, "quantity": 5000, "quantityPlaced": 3000, "quantityExecuted" : 2000},
+              {"id": 37, "quantity": 9090, "quantityPlaced": 2050, "quantityExecuted" : 5000},
+              {"id": 38, "quantity": 4000, "quantityPlaced": 4500, "quantityExecuted" : 500},
+              {"id": 39, "quantity": 5500, "quantityPlaced": 450, "quantityExecuted" : 4500}
+            ];
 
 			//Getting orders from server
 			vo.getOrders = getOrders;
