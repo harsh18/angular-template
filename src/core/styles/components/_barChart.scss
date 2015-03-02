@@ -1,0 +1,21 @@
+/*
+#	Author : Harsh Kumar Lamba
+#	Date : 2nd Feb 2015
+*/
+.axis text {
+  font: 10px sans-serif;
+}
+
+.x-axis{
+	path, line{
+		fill: none;
+		stroke: #000;
+		shape-rendering: crispEdges;
+	}
+}
+
+.y-axis{
+	path, line{
+		fill: none;
+	}	
+}
