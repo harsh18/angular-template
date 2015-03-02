@@ -48,11 +48,17 @@
                     yMax = margins.bottom,
 
                     xRange = d3.scale.linear()
-                                .range([xMin, xMax]),
-
+                                .range([xMin, xMax])
+                                .domain([margins.left, d3.max(traderOrderNew, function(d){ return d.quantity})]),
+                    /*
+                        d3.scale.ordinal()
+                                .rangeRoundbands([heightOFSVGstart, 0])
+                                .domain(arrayOFDatawithID - [4, 5, 6, 7]);
+                        In this way id is mapped with rangeRoundBand
+                    */
                     yRange = d3.scale.ordinal()
                                 .rangeRoundBands([margins.top, height - margins.bottom], 0.1)
-                                .domain(traderOrderNew.map(function (d) {return d.id;})),
+                                .domain(traderOrderNew.map(function(d){ return d.id})),
 
                     xAxis = d3.svg.axis()
                                 .scale(xRange)
@@ -78,19 +84,19 @@
                     .attr('transform', 'translate( '+ margins.left +' , 0)')
                     .call(yAxis);
                 
-                svg.selectAll('rect')
+                var bar = svg.selectAll('rect')
                     .data(traderOrderNew)
                     .enter()
                     .append('g')
                     .attr({
-                        'transform' : 'translate( '+ margins.left +' , '+ margins.top +')'
-                    })
-                    .append('rect')
-                    .attr({
-                        'width' : function(d){ return xRange(d.quantity);},
-                        'height' : yRange.rangeBand()
-                        
+                        'transform' : function(d, i){return 'translate( '+ (margins.left) +' , '+ (margins.top + i* ((height - margins.top - margins.bottom) / traderOrderNew.length)) +')'}
                     });
+
+                    bar.append('rect')
+                        .attr({
+                            'width' : function(d){ return xRange(d.quantity);},
+                            'height' : yRange.rangeBand()                            
+                        });
 
 
                 //Loop for traderOrderNew
