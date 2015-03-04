@@ -14,9 +14,7 @@
         var directive = {
             link: link,
             restrict: 'A',
-            scope: {
-                val: '='
-            }
+            scope: true
         };
         return directive;
 
@@ -209,7 +207,9 @@
                     });
             }
 
-            scope.$watch('val',drawChart, true);
+            scope.$watch(function(scope){
+                return scope.$parent.vo.orders;
+            },drawChart, true);
 
 
         }

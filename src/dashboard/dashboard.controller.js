@@ -97,7 +97,6 @@
 				//Calling Order Service and store in model orders
 				orderService.getInputDetails('orders').then(getOrderDetails, errorGetOrder);
 				function getOrderDetails(data){
-					//console.log(data.status);
 					var dataOrder = data;
 					vo.orders = dataOrder;
 				}

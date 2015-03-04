@@ -42,7 +42,7 @@
 				      </tr>
 				   </thead>
 				   <tbody>
-				      <tr ng-repeat="order in vo.orders.data">
+				      <tr ng-repeat="order in vo.orders">
 				         <td ng-bind="order.id"></td>
 				         <td ng-bind="order.creationTime"></td>
 				         <td ng-bind="order.side"></td>
@@ -65,7 +65,7 @@
 		<div class="row" ng-if="vo.isView">
 			<div class="col-lg-12">
 				<h2>Graph section</h2>
-				<div data-at-barchart data-val="vo.orders.data"></div>
+				<div data-at-barchart></div>
 			</div>
 		</div>
 	</div>

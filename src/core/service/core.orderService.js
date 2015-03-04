@@ -24,7 +24,9 @@
 		return order;
 
 		function getInputDetails(input){
-			return Restangular.all(input).getList();
+			return Restangular.all(input).getList().then(function(response){
+				return response.data.plain();
+			});
 		}
 
 		function postInputDetails(input ,order){
