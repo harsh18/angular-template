@@ -181,7 +181,6 @@
                     .enter().append("g")
                     .attr("class", "legend")
                     .attr("transform", function (d, i) {
-//                            return "translate(" + (-margin.l - margin.r - i * 100) + ",0)"; // Horizontal
                         return "translate(" + (-margin.l - margin.r) + "," + i * 20 + ")"; // Vertical
                     });
 
