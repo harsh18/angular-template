@@ -50,7 +50,7 @@
                                 .rangeRoundBands([0, h - margin.t - margin.b], 0.1)
                                 .domain(traderObj.map(function(d){ return d.id;}));
 
-                var color = ["#6b486b", "#827A98", "#98abc5"];
+                var color = ["#ff8000", "#febb68", "#ffefbf"];
                 var getRanges = function (d) {
                     var e, p;
                     e = ((d.quantityExecuted / d.quantity)).toFixed(4);
@@ -83,9 +83,6 @@
                         .ticks(5);
                 }
                 // Draw the x Grid lines
-
-
-
                 // function for the x grid lines
                 
                 var yCount = n.length;
@@ -116,7 +113,7 @@
                     .call(yAxis);
                 // Draw Y axis labels
                 n.forEach(function (td, j) {
-                    console.log(td, j);
+                   // console.log(td, j);
                     svg.append("g")
                         .attr("class", "grid")
                         .attr("transform", "translate(" + margin.l + "," + (h + margin.t) + ")")
@@ -159,7 +156,7 @@
                                                 
                     svg.append("g")
                         .attr("class","labels")
-                        .attr("transform", "translate(" + margin.l + "," + (yScale(td.id) + margin.t) + ")")
+                        .attr("transform", "translate(" + margin.l + "," + margin.t + ")")
                         .selectAll("rect")
                         .data(getRanges(td))
                         .enter()
@@ -172,14 +169,11 @@
                             return x(d[1]);
                         })
                         .attr("height", yScale.rangeBand())
-                        .attr("y", function (d, i) {
-                            var id = d.id;
-                            //return yScale.rangeBand(id);
-                            
-                            //return "translate(" + x(d[0]) + "," + Math.floor((w / yCount) / 2) + ")";
+                        .attr("transform", function (d) {
+                            return "translate(" + x(d[0]) + "," + yScale(td.id) + ")";
                         });
                 });
-                var legends = [{"title": "Executed", "color": "#6b486b"}, {"title": "Placed", "color": "#827A98"}, {"title": "Total", "color": "#98abc5"}];
+                var legends = [{"title": "Executed", "color": "#ff8000"}, {"title": "Placed", "color": "#febb68"}, {"title": "Total", "color": "#ffefbf"}];
                 var legend = svg.selectAll(".legend")
                     .data(legends.slice().reverse())
                     .enter().append("g")
