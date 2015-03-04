@@ -97,12 +97,12 @@
 				//Calling Order Service and store in model orders
 				orderService.getInputDetails('orders').then(getOrderDetails, errorGetOrder);
 				function getOrderDetails(data){
-					console.log(data.status);
+					//console.log(data.status);
 					var dataOrder = data;
 					vo.orders = dataOrder;
 				}
 				function errorGetOrder(res){
-					console.log('in', res);
+				//	console.log('in', res);
 					return false;
 				}
 			}
@@ -128,7 +128,7 @@
 					}
 					return ordrObj;
 				}	
-				console.log(orderObjArr);
+			//	console.log(orderObjArr);
 				//vo.assets = orderObjArr;			
 			}
 
@@ -152,18 +152,18 @@
 			function placementCreatedEvent(data){
 				angular.forEach(vo.orders.data, function (order,index) {
 	                if (order.id == data.orderId) {
-	                    vo.orders.data[index].quantityPlaced = data.quantityPlaced;
+	                	vo.orders.data[index].quantityPlaced += data.quantityPlaced;
 	                    vo.orders.data[index].status = data.status;
 	                 }
 	            });
 			}
 
 			function executionCreatedEvent(data){
+				console.log(data);
 				angular.forEach(vo.orders.data, function (order,index) {
 	                if (order.id == data.orderId) { 
-	                    vo.orders.data[index].quantityExecuted = data.quantityExecuted;
+	                    vo.orders.data[index].quantityExecuted += data.quantityExecuted;
 	                    vo.orders.data[index].executionPrice = data.executionPrice;
-	                    vo.orders.data[index].status = data.status;
 	                 }
               	});
 			}
