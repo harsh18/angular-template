@@ -145,30 +145,30 @@
 			}
 			
 			function orderCreatedEvent(data){
-				vo.orders.data.push(data);
+				vo.orders.push(data);
 			}
 
 			function placementCreatedEvent(data){
-				angular.forEach(vo.orders.data, function (order,index) {
+				console.log(data);
+				angular.forEach(vo.orders, function (order,index) {
 	                if (order.id == data.orderId) {
-	                	vo.orders.data[index].quantityPlaced += data.quantityPlaced;
-	                    vo.orders.data[index].status = data.status;
+	                	vo.orders[index].quantityPlaced += data.quantityPlaced;
+	                    vo.orders[index].status = data.status;
 	                 }
 	            });
 			}
 
 			function executionCreatedEvent(data){
-				console.log(data);
-				angular.forEach(vo.orders.data, function (order,index) {
+				angular.forEach(vo.orders, function (order,index) {
 	                if (order.id == data.orderId) { 
-	                    vo.orders.data[index].quantityExecuted += data.quantityExecuted;
-	                    vo.orders.data[index].executionPrice = data.executionPrice;
+	                    vo.orders[index].quantityExecuted += data.quantityExecuted;
+	                    vo.orders[index].executionPrice = data.executionPrice;
 	                 }
               	});
 			}
 
 			function allOrdersDeletedEvent(){
-				vo.orders.data = [];
+				vo.orders = [];
 			}
 		}
 })();

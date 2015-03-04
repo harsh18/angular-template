@@ -20,7 +20,7 @@
 			postInputDetails : postInputDetails,
 
 		} 
-
+		
 		return order;
 
 		function getInputDetails(input){
@@ -30,6 +30,7 @@
 		}
 
 		function postInputDetails(input ,order){
+			console.log(input, order);
 			var reponseArr = [];
 			for(var i=0; i<order.length; i++){
 				Restangular.all(input).post(order[i]);
