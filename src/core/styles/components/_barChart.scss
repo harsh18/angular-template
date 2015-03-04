@@ -2,6 +2,10 @@
 #	Author : Harsh Kumar Lamba
 #	Date : 2nd Feb 2015
 */
+
+.graph-bg{
+	background:#fff;
+}
 .axis text {
   font: 10px sans-serif;
 }
@@ -18,4 +22,11 @@
 	path, line{
 		fill: none;
 	}	
+	text{
+		font-size:12px;
+	}
+}
+
+.text-labels{
+	font-size:12px;
 }

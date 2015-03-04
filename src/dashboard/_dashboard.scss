@@ -6,11 +6,14 @@
 .dashboard-section{
 	background:$dashboard-section-bg;
 	border:1px solid rgba(0,0,0,1);
+	table{
+		margin-bottom:0;
+	}
 	.inline-element{
 		display:inline;
 	}
 	.user-header{
-	border-bottom:1px solid rgba(0,0,0,0.8);
+		border-bottom:1px solid rgba(0,0,0,0.8);
 		h4{
 			display:inline-block;
 			font-size:1.4rem;
@@ -27,5 +30,8 @@
 				font-size:1.2rem;
 			}
 		}
+	}
+	.section-footer{
+		min-height:60px;
 	}
 }

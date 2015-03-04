@@ -18,22 +18,16 @@
         };
         return directive;
 
-        /**** changes **/
-
-
-
-        /** end **/
-
         function link (scope, element, attrs) {
 
             console.log("i m here");
-            var margin = {t: 20, r: 150, b: 20, l: 70}, height = 600;
+            var margin = {t: 20, r: 150, b: 20, l: 70}, height = 400;
             var svg = d3.select(element[0]).append("svg")
                 .style('width', '100%')
                 .attr('height', height)
                 .attr("transform", "translate(0," + (margin.t) + ")");
             var drawChart =  function (n, o) {
-
+                //Removing SVG data and regenerating graph
                 svg.selectAll('*').remove();
 
                 if (!n || typeof (n[0]) === "undefined") {
@@ -50,12 +44,11 @@
                                 .rangeRoundBands([0, h - margin.t - margin.b], 0.1)
                                 .domain(traderObj.map(function(d){ return d.id;}));
 
-                var color = ["#ff8000", "#febb68", "#ffefbf"];
+                var color = ["rgba(225,128,0,1)", "rgba(225,128,0,0.5)", "rgba(225,128,0,0.3)"];
                 var getRanges = function (d) {
                     var e, p;
                     e = ((d.quantityExecuted / d.quantity)).toFixed(4);
                     p = ((d.quantityPlaced / d.quantity)).toFixed(4);
-                    //console.log([[0, e], [e, (p - e).toFixed(4)], [p, 1 - p]]);
                     return [[0, e], [e, (p - e).toFixed(4)], [p, 1 - p]];
                 };
 
@@ -84,7 +77,6 @@
                 }
                 // Draw the x Grid lines
                 // function for the x grid lines
-                
                 var yCount = n.length;
                 var xAxis = d3.svg.axis()
                     .scale(x)
@@ -103,12 +95,12 @@
 
                 //X-axis created
                 svg.append("g")
-                    .attr("class", "x axis")
+                    .attr("class", "x-axis")
                     .attr("transform", "translate(" + margin.l + "," + (margin.t) + ")")
                     .call(xAxis);
                 //Y-axis created
                 svg.append("g")
-                    .attr("class", "y axis")
+                    .attr("class", "y-axis")
                     .attr("transform", "translate(" + margin.l + "," + (margin.t) + ")")
                     .call(yAxis);
                 // Draw Y axis labels
@@ -123,13 +115,13 @@
                     );
 
                     // Draw the y Grid lines
-                    /*svg.append("g")
+                    svg.append("g")
                         .attr("class", "grid")
                         .attr("transform", "translate(" + margin.l + "," + (h + margin.t) + ")")
                         .call(make_y_axis()
                             .tickSize(-w, 0, 0)
                             .tickFormat("")
-                    );*/
+                    );
 
                    // console.log("j>>>>" + j);
                   //  if(j == 0) {
@@ -140,9 +132,20 @@
                             .attr("transform", "translate(" + (margin.l - 20) + "," + (y(j) + Math.floor((w / yCount) / 2) + yCount) + ")");*/
                         // Put Total quantity on the right of bar
                     svg.append("g")
+                        .attr({
+                           "transform" : "translate(0," + margin.t + ")" 
+                        })
                         .append("text")
                         .text(td.quantity)
-                        .attr("transform", "translate(" + (w - margin.r + 10) + "," + (margin.t + j * (h/traderObj.length)) + ")");
+                        .attr({
+                            "transform" : function(){
+
+                                return "translate(" + (w - margin.r + 10) + "," + (yScale(td.id) + yScale.rangeBand()/2) + ")"
+                            },
+                            "class" : "text-labels"
+                        });
+                        
+
                         // Draw a line below total quantity right to bar
                    // }
                     svg.append("g")
@@ -151,8 +154,6 @@
                         .attr("class", "line")
                         .attr("d", line([{x: 0, y: 0}, {x: 60, y: 0}]))
                         .attr("transform", "translate(" + (w - margin.r) + "," + (y(j) + Math.floor((w / yCount) / 2) + yCount + 1) + ")");
-
-
                                                 
                     svg.append("g")
                         .attr("class","labels")
@@ -170,10 +171,11 @@
                         })
                         .attr("height", yScale.rangeBand())
                         .attr("transform", function (d) {
+                            console.log(yScale(td.id));
                             return "translate(" + x(d[0]) + "," + yScale(td.id) + ")";
                         });
                 });
-                var legends = [{"title": "Executed", "color": "#ff8000"}, {"title": "Placed", "color": "#febb68"}, {"title": "Total", "color": "#ffefbf"}];
+                var legends = [{"title": "Executed", "color": "rgba(225,128,0,1)"}, {"title": "Placed", "color": "rgba(225,128,0,0.5)"}, {"title": "Total", "color": "rgba(225,128,0,0.3)"}];
                 var legend = svg.selectAll(".legend")
                     .data(legends.slice().reverse())
                     .enter().append("g")
