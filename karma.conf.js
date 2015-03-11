@@ -1,7 +1,7 @@
 /* jshint node: true */
 
 'use strict';
-
+/*
 module.exports = function(config) {
     var gulpConfig = require('./gulp.config')();
 
@@ -60,4 +60,13 @@ module.exports = function(config) {
         // if true, Karma captures browsers, runs the tests and exits
         singleRun: false
     });
+};*/
+module.exports = function(config) {
+  config.set({
+    frameworks: ['jasmine'],
+ 
+    files: [
+      'test/*.js'
+    ]
+  });
 };
