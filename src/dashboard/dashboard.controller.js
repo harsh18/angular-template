@@ -10,9 +10,9 @@
 		.module('app.dashboard')
 			.controller('dashboardController', dashboardController);
 
-		dashboardController.$inject = ['$scope', 'userService', '$location', 'sessionService', 'orderService', 'socketService'];
+		dashboardController.$inject = ['$scope', 'userService', '$location', 'sessionService', 'orderService', 'socketService', 'infiniteScrollService'];
 
-		function dashboardController($scope, userService, $location, sessionService, orderService, socketService){
+		function dashboardController($scope, userService, $location, sessionService, orderService, socketService, infiniteScrollService){
 			/* vo stands for virtual object */
 			var vo = this, instruments, sesInfo, socket;
 
@@ -55,6 +55,10 @@
 			//Destroy Session
 			vo.destSession = destSession;
 
+			//InfiniteScroll Helper Object
+			vo.reddit = new infiniteScrollService();
+			console.log(vo.reddit);
+
 			//###############
 			//Socket - Events
 			//###############
@@ -75,14 +79,15 @@
 				sesInfo = JSON.parse(sessionService.getSessionData());
 
 				//Check Session
+				/*
 				if(!sesInfo){
 					console.log('Not available');
 					$location.url('login');
 					return false;
-				}
+				}*/
 
 				//Calling Instruments service and store in instrument variable
-				userService.getInputDetails('instruments').then(getInstrumentDetails);
+				//userService.getInputDetails('instruments').then(getInstrumentDetails);
 				function getInstrumentDetails(data){
 					instruments = data
 				}
@@ -90,15 +95,15 @@
 				getOrders();
 
 				//User Name
-				vo.userName = sesInfo.name;
+				//vo.userName = sesInfo.name;
 			}
 
 			function getOrders(){
 				//Calling Order Service and store in model orders
-				orderService.getInputDetails('orders').then(getOrderDetails, errorGetOrder);
+				//orderService.getInputDetails('orders').then(getOrderDetails, errorGetOrder);
 				function getOrderDetails(data){
-					var dataOrder = data;
-					vo.orders = dataOrder;
+					//var dataOrder = data;
+					//vo.orders = dataOrder;
 				}
 				function errorGetOrder(res){
 				//	console.log('in', res);
@@ -127,7 +132,7 @@
 					}
 					return ordrObj;
 				}	
-			//	console.log(orderObjArr);
+				//console.log(orderObjArr);
 				//vo.assets = orderObjArr;			
 			}
 

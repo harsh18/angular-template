@@ -9,6 +9,10 @@
 	angular
 		.module('app.dashboard', 
 			/*Inject dependecy*/
-		['restangular']);
+		[
+			'restangular',
+			'infinite-scroll'
+
+		]);
 
 })();

@@ -1,9 +1,9 @@
 <div class="login-section row" ng-init="vo.executeSelf()">
 	<div class="col-lg-3 center-block float-none">
-		<form class="form-signin" role="form" method="post" name="loginForm" ng-submit="vo.authenticate(loginForm.users.$valid)" novalidate>
+		<form class="form-signin" role="form" method="post" name="loginForm" ng-submit="vo.authenticate(true)" novalidate>
 			<h2 class="form-signin-heading">Log In </h2>
 			<!-- Get user info from Service getUser -->
-			<select name="users" class="space-bottom-size1x selectDropdown" ng-model="vo.selectedItem" ng-options = "opt.name for opt in vo.users" required ng-class="{'has-error' : loginForm.users.$invalid && vo.isValidForm}">
+			<select name="users" class="space-bottom-size1x selectDropdown" ng-model="vo.selectedItem" ng-options = "opt.name for opt in vo.users"  ng-class="{'has-error' : loginForm.users.$invalid && vo.isValidForm}">
 				<option value="">Please select</option>
 			</select>
 			<span ng-show="loginForm.users.$invalid && vo.isValidForm" class="has-error-container">Please select user</span>

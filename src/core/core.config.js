@@ -10,16 +10,20 @@
 
 	core.config(appConfig);
 
-	appConfig.$inject = ['$stateProvider', '$urlRouterProvider', 'RestangularProvider'];
+	appConfig.$inject = ['$stateProvider', '$urlRouterProvider', 'RestangularProvider', '$httpProvider'];
 
-	function appConfig($stateProvider, $urlRouterProvider, RestangularProvider){
+	function appConfig($stateProvider, $urlRouterProvider, RestangularProvider, $httpProvider){
 		//Set base urls
-		RestangularProvider.setBaseUrl('http://localhost:8080');
+		//RestangularProvider.setBaseUrl('http://vocab.nic.in/rest.php/country/');
 		//Set full response - will help in getting Http response code as well
-		RestangularProvider.setFullResponse(true);
+		//RestangularProvider.setFullResponse(true);
 
 		//Otherwise Route - takes the url path
 		$urlRouterProvider.otherwise("/login");
+
+		RestangularProvider.setDefaultHeaders({
+			"Access-Control-Allow-Origin" : "*"
+		  });
 
 		//Otherwise Rule - takes the function
 		//$urlRouterProvider.rule(otherWiseUrlCheck);
